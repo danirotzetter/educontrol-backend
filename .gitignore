@@ -1,0 +1,20 @@
+/* NodeJS ignores */
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+build
+
+node_modules
+
+/* Custom ignores */
+config/development.json
+config/production.json
