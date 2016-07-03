@@ -2,42 +2,58 @@
  * Require libraries
  */
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose'); // To simplify dealing with mongodb
+const http = require('http'); // For base http operations
 const config = require('./app/config.js'); // Loads the configuration
+const app = express();
+const router = express.Router(); // get an instance of the express Router
 
+
+console.log('Starting server in environment "' + config.get('env') + '"');
 
 /**
  * Configure the application
  */
 app.use(bodyParser.urlencoded({extended: true})); // Simplified body reading: adds <form> element data to the body
+app.use(bodyParser.json());
 
 
 /**
- * START DEFINE LISTENER
- */
-app.get('/', (req, res) => {
-    res.send('Hello World new');
-})
-;
+ * Load controllers
+  */
+var userCtrl= require('./controllers/user-ctrl.js');
+
 /**
- * END DEFINE LISTENER
+ * START ROUTES
  */
+router.get('/', function(req, res) {
+    res.json({ message: 'Please use an api call' });
+});
+// REGISTER OUR ROUTES -------------------------------
+app.use('/', router);
+app.use('/users', userCtrl);
+/**
+ * END ROUTES
+ */
+
 
 /**
  * Launch the application if connection to MongoDB is successful
  */
-var db;
 var mongoDbUrl = 'mongodb://' + config.get('db:username') + ':' + config.get('db:password') + '@' + config.get('db:host') + ':' + config.get('db:port') + '/' + config.get('db:database');
 console.log('Attempt to connect to ' + mongoDbUrl);
-MongoClient.connect(mongoDbUrl, (err, database) => {
+mongoose.connect(mongoDbUrl, (err, database) => {
     // ... start the server
-    if (err) return console.log(err);
-    db = database;
+    if (err){
+        console.log('Cannot connect to database: '+err);
+    }
+    else{
+        console.log('Successfully connected to database');
+    }
 
     // Start listening
-    app.listen(config.get('app:port'), function () {
+    app.listen(config.get('app:port'), ()=> {
         console.log('listening on port ' + config.get('app:port'))
     });
 })

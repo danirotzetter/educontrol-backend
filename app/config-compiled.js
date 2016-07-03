@@ -13,6 +13,10 @@ function Config() {
     nconf.file(environment, { file: './config/' + environment + '.json' });
     // Second priority: if no config settings found in arguments or configuration files, fall back to default values
     nconf.file('default', { file: './config/default.json' });
+
+    // Set the environment
+    nconf.set('env', environment);
+    nconf.set('dev', environment == 'development');
 }
 /**
  * Load a value from the config by key
