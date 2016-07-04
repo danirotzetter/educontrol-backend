@@ -3,19 +3,45 @@
  */
 // grab the things we need
 var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
 var Schema = mongoose.Schema;
+
+/**
+ * Security
+ */
+var salt = bcrypt.genSaltSync(10);
+
 
 // create a schema
 var userSchema = new Schema({
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    email: { type: String, required: true },
-    location: String,
-    meta: {
-        age: Number,
-        website: String
-    },
+    username: {type: String, required: true, unique: true},
+    password: {type: String},
+    email: {type: String, required: true},
+    /*location: String,
+     meta: {
+     age: Number,
+     website: String
+     },*/
     created_at: Date
+});
+
+
+/**
+ * Before save
+ */
+userSchema.pre('save', function (next) {
+    // get the current date
+    var currentDate = new Date();
+    // if created_at doesn't exist, add to that field
+    if (!this.created_at)
+        this.created_at = currentDate;
+
+    if (this.password) {
+        // Setting new password: hash it
+        this.password = bcrypt.hashSync(this.password, salt);
+    }
+
+    next();
 });
 
 // the schema is useless so far

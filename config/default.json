@@ -8,5 +8,8 @@
     "database": "database",
     "username": "user",
     "password": "password"
+  },
+  "security":{
+    "jsonTokenVerificationSecret": "password"
   }
 }
