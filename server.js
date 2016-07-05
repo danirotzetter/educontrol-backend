@@ -10,6 +10,7 @@ const app = express();
 const router = express.Router(); // get an instance of the express Router
 var morgan = require('morgan'); // Logging
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+var cors = require('cors'); // Allow cross-site requests
 
 
 console.log('Starting server in environment "' + config.get('env') + '"');
@@ -21,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: true})); // Simplified body reading: ad
 app.use(bodyParser.json());
 app.use(morgan('dev'));// use morgan to log requests to the console
 app.set('jsonTokenVerificationSecret', config.get('security:jsonTokenVerificationSecret')); // secret variable to verify JSON tokens
-
+app.use(cors()); // Allow cross-site requests
 
 /**
  * Load controllers

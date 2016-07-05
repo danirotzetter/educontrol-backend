@@ -141,6 +141,9 @@ users.post('/login', (req, res)=> {
     var password = req.body.password;
     var authenticated = false;
 
+    console.log('Processing login');
+    console.log(req.body);
+
     // Find user
     Model.findOne({username: username}, function (err, user) {
         if (user) {
@@ -155,7 +158,7 @@ users.post('/login', (req, res)=> {
             }
         }
         else{
-            console.log('Login failure: no user found');
+            console.log('Login failure: no user found with username "'+username+'"');
         }
         if (authenticated) {
             var secret = config.get('security:jsonTokenVerificationSecret');
@@ -171,7 +174,7 @@ users.post('/login', (req, res)=> {
                 });
         }
         else {
-            return res.json({
+            return res.status(400).json({
                 success: false,
                 message: 'Login failure'
             })
