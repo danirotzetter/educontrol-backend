@@ -167,9 +167,14 @@ users.post('/login', (req, res)=> {
                 expiresIn: '24h'
             });
 
+            // Remove properties before returning user object
+            delete user.password;
+            delete user._id;
+
             return res
                 .json({
                     success: true,
+                    user: user,
                     token: token
                 });
         }

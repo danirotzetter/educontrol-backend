@@ -10,6 +10,7 @@ const app = express();
 const router = express.Router(); // get an instance of the express Router
 var morgan = require('morgan'); // Logging
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+var cors = require('cors'); // Allow cross-site requests
 
 console.log('Starting server in environment "' + config.get('env') + '"');
 
@@ -20,26 +21,36 @@ app.use(bodyParser.urlencoded({ extended: true })); // Simplified body reading: 
 app.use(bodyParser.json());
 app.use(morgan('dev')); // use morgan to log requests to the console
 app.set('jsonTokenVerificationSecret', config.get('security:jsonTokenVerificationSecret')); // secret variable to verify JSON tokens
+app.use(cors()); // Allow cross-site requests
 
 /**
  * Load controllers
  */
 var userCtrl = require('./controllers/user-ctrl.js');
+var studentCtrl = require('./controllers/student-ctrl.js');
 
 /**
+ * ==================
  * START ROUTES
+ * ==================
  */
-//Route middleware: require authentication
+/**
+ * Add routing middleware to require authentication
+ */
 router.use(function (req, res, next) {
 
     // Define routes that are accessible without authentication
     var unauthAccess = ['/users/login'];
 
+    /**
+     * Skip routes that require no authentication
+     */
     if (unauthAccess.indexOf(req.url) >= 0) {
         // Allowed in any case, without authentication
         console.log('No authentication required for request "' + req.url + '"');
         next();
     } else {
+        // Route that requires authentication
         console.log('Must authenticate user for request "' + req.url + '"');
 
         // check header or url parameters or post parameters for token
@@ -72,12 +83,15 @@ router.use(function (req, res, next) {
 router.get('/', function (req, res) {
     res.json({ message: 'Please use an api call' });
 });
-// REGISTER OUR ROUTES -------------------------------
+// REGISTER ROUTES -------------------------------
 app.use('/', router);
 app.use('/users', userCtrl);
+app.use('/students', studentCtrl);
 
 /**
+ * ==================
  * END ROUTES
+ * ==================
  */
 
 /**
