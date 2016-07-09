@@ -22,6 +22,7 @@ students.get('/', function (req, res) {
  * Create new student
  */
 students.post('/', function (req, res) {
+    console.log('About to save student');
     var student= new Model({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -29,15 +30,19 @@ students.post('/', function (req, res) {
     });
     student.save(function (err, user) {
         if (err) {
+            console.log('Error saving student '+err);
             return res.status(500).json({
                 message: 'Error when saving',
                 error: err
             });
         }
+        else{
+            console.log('Successfully saved student '+err);
         return res.json({
             message: 'saved',
             _id: student._id
         });
+        }
     });
 });
 

@@ -20,7 +20,9 @@ console.log('Starting server in environment "' + config.get('env') + '"');
  */
 app.use(bodyParser.urlencoded({extended: true})); // Simplified body reading: adds <form> element data to the body
 app.use(bodyParser.json());
-app.use(morgan('dev'));// use morgan to log requests to the console
+if (config.get('dev')) {
+    app.use(morgan('dev'));// use morgan to log requests to the console
+}
 app.set('jsonTokenVerificationSecret', config.get('security:jsonTokenVerificationSecret')); // secret variable to verify JSON tokens
 app.use(cors()); // Allow cross-site requests
 
@@ -47,15 +49,14 @@ router.use(function (req, res, next) {
 
     /**
      * Skip routes that require no authentication
+     * Skip authentication in DEV mode
      */
-    if (unauthAccess.indexOf(req.url) >= 0) {
+    if (unauthAccess.indexOf(req.url) >= 0 || config.get('dev')) {
         // Allowed in any case, without authentication
-        console.log('No authentication required for request "' + req.url + '"');
         next();
     }
     else {
         // Route that requires authentication
-        console.log('Must authenticate user for request "' + req.url + '"');
 
         // check header or url parameters or post parameters for token
         var token = req.body.token || req.query.token || req.headers['x-access-token'];
