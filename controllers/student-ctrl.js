@@ -26,6 +26,7 @@ students.post('/', function (req, res) {
     var student= new Model({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        email: req.body.email,
         birthday: req.body.birthday
     });
     student.save(function (err, user) {
@@ -51,6 +52,7 @@ students.post('/', function (req, res) {
  */
 students.put('/:id', function (req, res) {
     var id = req.params.id;
+    console.log('Update student with id '+id);
     Model.findOne({_id: id}, function (err, student) {
         if (err) {
             return res.status(500).json({
@@ -66,6 +68,7 @@ students.put('/:id', function (req, res) {
         else {
             student.firstName = req.body.firstName? req.body.firstName: student.firstName;
             student.lastName = req.body.lastName ? req.body.lastName : student.lastName;
+            student.lastName = req.body.email? req.body.email : student.email;
             student.birthday= req.body.birthday ? req.body.birthday : student.birthday;
             student.save(function (err, student) {
                 if (err) {
