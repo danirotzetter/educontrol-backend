@@ -100,6 +100,7 @@ app.use('/students', studentCtrl);
  */
 var mongoDbUrl = 'mongodb://' + config.get('db:username') + ':' + config.get('db:password') + '@' + config.get('db:host') + ':' + config.get('db:port') + '/' + config.get('db:database');
 console.log('Attempt to connect to ' + mongoDbUrl);
+mongoose.Promise = global.Promise; // Use updated promise (without this setup, a deprecated warning from mongoose will show up)
 mongoose.connect(mongoDbUrl, (err, database) => {
     // ... start the server
     if (err) {

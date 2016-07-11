@@ -115,10 +115,11 @@ students.get('/:id', function (req, res) {
  */
 students.delete('/:id', function (req, res) {
     var id = req.params.id;
+    console.log('About to delete student '+id);
     Model.findOne({_id: id}, function (err, student) {
         if (err) {
             return res.status(500).json( {
-                message: 'Error deleting'
+                message: 'Error finding object'
             });
         }
         if (!student) {
@@ -126,7 +127,14 @@ students.delete('/:id', function (req, res) {
                 message: 'Not found'
             });
         }
-        return res.json(student);
+        student.remove(function(err) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Error deleting'
+                });
+            }
+            return res.json({message:'Successfully deleted object'});
+        });
     });
 });
 
