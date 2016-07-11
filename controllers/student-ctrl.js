@@ -18,6 +18,28 @@ students.get('/', function (req, res) {
     });
 });
 
+
+/**
+ * Find user by id
+ */
+students.get('/:id', function (req, res) {
+    var id = req.params.id;
+    Model.findOne({_id: id}, function (err, student) {
+        if (err) {
+            return res.status(500).json({
+                message: 'Error when getting object'
+            });
+        }
+        if (!student) {
+            return res.status(404).json({
+                message: 'Not found'
+            });
+        }
+        return res.json(student);
+    });
+});
+
+
 /**
  * Create new student
  */
@@ -68,7 +90,7 @@ students.put('/:id', function (req, res) {
         else {
             student.firstName = req.body.firstName? req.body.firstName: student.firstName;
             student.lastName = req.body.lastName ? req.body.lastName : student.lastName;
-            student.lastName = req.body.email? req.body.email : student.email;
+            student.email = req.body.email? req.body.email : student.email;
             student.birthday= req.body.birthday ? req.body.birthday : student.birthday;
             student.save(function (err, student) {
                 if (err) {
@@ -86,26 +108,6 @@ students.put('/:id', function (req, res) {
                 }
             });
         }
-    });
-});
-
-/**
- * Find user by id
- */
-students.get('/:id', function (req, res) {
-    var id = req.params.id;
-    Model.findOne({_id: id}, function (err, student) {
-        if (err) {
-            return res.status(500).json({
-                message: 'Error when getting object'
-            });
-        }
-        if (!student) {
-            return res.status(404).json({
-                message: 'Not found'
-            });
-        }
-        return res.json(student);
     });
 });
 

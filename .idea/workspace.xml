@@ -4,9 +4,6 @@
     <list default="true" id="475b5e40-7419-495c-9e33-99b17e763bae" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/student-ctrl.js" afterPath="$PROJECT_DIR$/controllers/student-ctrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server-compiled.js" afterPath="$PROJECT_DIR$/server-compiled.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server-compiled.js.map" afterPath="$PROJECT_DIR$/server-compiled.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="educontrol-backend.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,17 +35,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="student-ctrl.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="student-ctrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/student-ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
+            <state relative-caret-position="595">
+              <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="379">
@@ -114,8 +111,8 @@
         <option value="$PROJECT_DIR$/models/student.js" />
         <option value="$PROJECT_DIR$/models/teacher.js" />
         <option value="$PROJECT_DIR$/models/person.js" />
-        <option value="$PROJECT_DIR$/controllers/student-ctrl.js" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/controllers/student-ctrl.js" />
       </list>
     </option>
   </component>
@@ -610,7 +607,14 @@
       <option name="project" value="LOCAL" />
       <updated>1468222738126</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Complete student delete operation">
+      <created>1468223403575</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1468223403575</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -659,7 +663,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Set up CRUD operations for student, teacher, course, garde" />
     <MESSAGE value="Complete student CRUD operations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete student CRUD operations" />
+    <MESSAGE value="Complete student delete operation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete student delete operation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1014,18 +1019,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/student-ctrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
           <caret line="109" column="127" selection-start-line="109" selection-start-column="127" selection-end-line="109" selection-end-column="127" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/student-ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
           <folding />
         </state>
       </provider>
