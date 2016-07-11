@@ -49,7 +49,7 @@ teachers.post('/', function (req, res) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        birthday: req.body.birthday
+        location: req.body.location
     });
     teacher.save(function (err, user) {
         if (err) {
@@ -91,7 +91,7 @@ teachers.put('/:id', function (req, res) {
             teacher.firstName = req.body.firstName? req.body.firstName: teacher.firstName;
             teacher.lastName = req.body.lastName ? req.body.lastName : teacher.lastName;
             teacher.email = req.body.email? req.body.email : teacher.email;
-            teacher.birthday= req.body.birthday ? req.body.birthday : teacher.birthday;
+            teacher.location = req.body.location ? req.body.location : teacher.location;
             teacher.save(function (err, teacher) {
                 if (err) {
                     return res.status(500).json({

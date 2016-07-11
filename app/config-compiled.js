@@ -6,7 +6,7 @@ var nconf = require('nconf');
 function Config() {
     nconf.argv().env();
 
-    // If NODE_ENV supplied as an argument, use that. Else, fall back to development
+    // If NODE_ENV supplied by process, use that. Else, fall back to development
     var environment = nconf.get('NODE_ENV') || 'development';
     environment = environment.toLowerCase();
     // First priority: use the environment-specific settings

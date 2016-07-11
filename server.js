@@ -40,7 +40,7 @@ var courseCtrl = require('./controllers/course-ctrl.js');
  * ==================
  */
 /**
- * Add routing middleware to require authentication
+ * Add routing middleware to require authentication and authorization
  */
 router.use(function (req, res, next) {
 
@@ -51,10 +51,10 @@ router.use(function (req, res, next) {
 
     /**
      * Skip routes that require no authentication
-     * Skip authentication in DEV mode
+     * Skip authentication if defined so in the properties
      */
-    if (unauthAccess.indexOf(req.url) >= 0 || config.get('dev')) {
-        // Allowed in any case, without authentication
+    if (unauthAccess.indexOf(req.url) >= 0 || config.get('noAuthentication')) {
+        // Allowed in any case, without authentication/ authorization
         next();
     }
     else {

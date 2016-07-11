@@ -46,10 +46,8 @@ courses.get('/:id', function (req, res) {
 courses.post('/', function (req, res) {
     console.log('About to save course');
     var course= new Model({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        birthday: req.body.birthday
+        name: req.body.name,
+        description: req.body.description
     });
     course.save(function (err, user) {
         if (err) {
@@ -88,10 +86,8 @@ courses.put('/:id', function (req, res) {
             });
         }
         else {
-            course.firstName = req.body.firstName? req.body.firstName: course.firstName;
-            course.lastName = req.body.lastName ? req.body.lastName : course.lastName;
-            course.email = req.body.email? req.body.email : course.email;
-            course.birthday= req.body.birthday ? req.body.birthday : course.birthday;
+            course.name = req.body.name? req.body.name: course.name;
+            course.description = req.body.description? req.body.description: course.description;
             course.save(function (err, course) {
                 if (err) {
                     return res.status(500).json({
