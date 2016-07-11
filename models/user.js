@@ -17,11 +17,6 @@ var userSchema = new Schema({
     username: {type: String, required: true, unique: true},
     password: {type: String},
     email: {type: String, required: true},
-    /*location: String,
-     meta: {
-     age: Number,
-     website: String
-     },*/
     created_at: Date
 });
 

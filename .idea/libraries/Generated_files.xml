@@ -129,6 +129,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/bytes/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/duplexify/node_modules/readable-stream/lib/_stream_transform-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/vary/index-compiled.js" />
+        <item url="file://$PROJECT_DIR$/models/course-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/duplexify/node_modules/readable-stream/lib/_stream_passthrough-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/jsbn/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/babel-cli/lib/babel-doctor/rules/npm-3-compiled.js" />
@@ -1655,6 +1656,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/for-each-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/reduce-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/splice-compiled.js" />
+        <item url="file://$PROJECT_DIR$/controllers/teacher-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/concat-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/unshift-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/entries-compiled.js" />
@@ -3440,6 +3442,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/bin-version-check/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/is-builtin-module/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/require_optional/index-compiled.js" />
+        <item url="file://$PROJECT_DIR$/controllers/course-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/path-is-absolute/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/is-posix-bracket/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/is-equal-shallow/index-compiled.js" />
@@ -4473,6 +4476,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/bytes/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/duplexify/node_modules/readable-stream/lib/_stream_transform-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/vary/index-compiled.js" />
+      <root url="file://$PROJECT_DIR$/models/course-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/duplexify/node_modules/readable-stream/lib/_stream_passthrough-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/jsbn/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/babel-cli/lib/babel-doctor/rules/npm-3-compiled.js" />
@@ -5999,6 +6003,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/for-each-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/reduce-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/splice-compiled.js" />
+      <root url="file://$PROJECT_DIR$/controllers/teacher-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/concat-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/unshift-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/entries-compiled.js" />
@@ -7784,6 +7789,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/bin-version-check/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/is-builtin-module/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/require_optional/index-compiled.js" />
+      <root url="file://$PROJECT_DIR$/controllers/course-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/path-is-absolute/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/is-posix-bracket/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/is-equal-shallow/index-compiled.js" />

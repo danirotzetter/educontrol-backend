@@ -31,6 +31,8 @@ app.use(cors()); // Allow cross-site requests
  */
 var userCtrl = require('./controllers/user-ctrl.js');
 var studentCtrl = require('./controllers/student-ctrl.js');
+var teacherCtrl = require('./controllers/teacher-ctrl.js');
+var courseCtrl = require('./controllers/course-ctrl.js');
 
 /**
  * ==================
@@ -93,7 +95,9 @@ router.get('/', function (req, res) {
 // REGISTER ROUTES -------------------------------
 app.use('/', router);
 app.use('/users', userCtrl);
+app.use('/teachers', teacherCtrl);
 app.use('/students', studentCtrl);
+app.use('/courses', courseCtrl);
 
 /**
  * ==================
