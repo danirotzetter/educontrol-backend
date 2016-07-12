@@ -1,8 +1,8 @@
 /**
  * Created by Dani on 03.07.2016.
  */
-// grab the things we need
 var mongoose = require('mongoose');
+var Exam = require('./exam').schema;
 
 // create a schema
 var Schema = mongoose.Schema;
@@ -10,6 +10,7 @@ var Schema = mongoose.Schema;
 var courseSchema = new Schema({
     name: {type: String, required: true},
     description: {type: String},
+    exams: [Exam]
 });
 
 

@@ -1,6 +1,7 @@
 var express = require('express');
 var courses = express.Router();
 var Model = require('../models/course.js');
+var Exam = require('../models/exam.js');
 const config = require('../app/config.js');
 
 
@@ -8,10 +9,10 @@ const config = require('../app/config.js');
  * List of all courses
  */
 courses.get('/', function (req, res) {
-    Model.find(function (err, list) {
+    Model.find({}).populate('exams').exec(function (err, list) {
         if (err) {
             return res.json(500, {
-                message: 'Error getting users.'
+                message: 'Error getting objects.'
             });
         }
         return res.json(list);
@@ -24,7 +25,7 @@ courses.get('/', function (req, res) {
  */
 courses.get('/:id', function (req, res) {
     var id = req.params.id;
-    Model.findOne({_id: id}, function (err, course) {
+    Model.findOne({_id: id}).populate({path: 'exams', populate: {path: 'grades'}}).exec(function (err, course) {
         if (err) {
             return res.status(500).json({
                 message: 'Error when getting object'
@@ -45,24 +46,24 @@ courses.get('/:id', function (req, res) {
  */
 courses.post('/', function (req, res) {
     console.log('About to save course');
-    var course= new Model({
+    var course = new Model({
         name: req.body.name,
         description: req.body.description
     });
-    course.save(function (err, user) {
+    course.save(function (err, course) {
         if (err) {
-            console.log('Error saving course '+err);
+            console.log('Error saving course ' + err);
             return res.status(500).json({
                 message: 'Error when saving',
                 error: err
             });
         }
-        else{
-            console.log('Successfully saved course '+err);
-        return res.json({
-            message: 'saved',
-            _id: course._id
-        });
+        else {
+            console.log('Successfully saved course ' + err);
+            return res.json({
+                message: 'saved',
+                _id: course._id
+            });
         }
     });
 });
@@ -72,39 +73,28 @@ courses.post('/', function (req, res) {
  */
 courses.put('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('Update course with id '+id);
-    Model.findOne({_id: id}, function (err, course) {
-        if (err) {
-            return res.status(500).json({
-                message: 'Error updating',
-                error: err
-            });
-        }
-        else if (!course) {
-            return res.status(404).json({
-                message: 'Not found'
-            });
-        }
-        else {
-            course.name = req.body.name? req.body.name: course.name;
-            course.description = req.body.description? req.body.description: course.description;
-            course.save(function (err, course) {
-                if (err) {
-                    return res.status(500).json({
-                        message: 'Error saving'
-                    });
-                }
-                else if (!course) {
-                    return res.status(404).json({
-                        message: 'Not found'
-                    });
-                }
-                else {
-                    return res.json(course);
-                }
-            });
-        }
-    });
+    console.log('Update course with id ' + id);
+    Model.findByIdAndUpdate({_id: id},
+        req.body,
+        {upsert: true},
+        function (err, course) {
+            if (err) {
+                console.log('Err ' + err);
+                return res.status(500).json({
+                    message: 'Error updating',
+                    error: err
+                });
+            }
+            else if (!course) {
+                return res.status(404).json({
+                    message: 'Not found'
+                });
+            }
+            else {
+                console.log('Successfully updated');
+                return res.json(course);
+            }
+        });
 });
 
 
@@ -113,10 +103,10 @@ courses.put('/:id', function (req, res) {
  */
 courses.delete('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('About to delete course '+id);
+    console.log('About to delete course ' + id);
     Model.findOne({_id: id}, function (err, course) {
         if (err) {
-            return res.status(500).json( {
+            return res.status(500).json({
                 message: 'Error finding object'
             });
         }
@@ -125,17 +115,16 @@ courses.delete('/:id', function (req, res) {
                 message: 'Not found'
             });
         }
-        course.remove(function(err) {
+        course.remove(function (err) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error deleting'
                 });
             }
-            return res.json({message:'Successfully deleted object'});
+            return res.json({message: 'Successfully deleted object'});
         });
     });
 });
-
 
 
 module.exports = courses;

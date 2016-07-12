@@ -49,11 +49,13 @@ router.use(function (req, res, next) {
         '/users/login'
     ];
 
+    console.log('Skip authentication? '+config.get('security:noAuthentication'));
+
     /**
      * Skip routes that require no authentication
      * Skip authentication if defined so in the properties
      */
-    if (unauthAccess.indexOf(req.url) >= 0 || config.get('noAuthentication')) {
+    if (unauthAccess.indexOf(req.url) >= 0 || config.get('security:noAuthentication')) {
         // Allowed in any case, without authentication/ authorization
         next();
     }
