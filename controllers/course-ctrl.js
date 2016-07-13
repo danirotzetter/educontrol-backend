@@ -25,7 +25,7 @@ courses.get('/', function (req, res) {
  */
 courses.get('/:id', function (req, res) {
     var id = req.params.id;
-    Model.findOne({_id: id}).populate({path: 'exams', populate: {path: 'grades'}}).exec(function (err, course) {
+    Model.findOne({_id: id}).populate({path: 'exams', populate: {path: 'grades'}}).populate('students').exec(function (err, course) {
         if (err) {
             return res.status(500).json({
                 message: 'Error when getting object'
@@ -76,7 +76,7 @@ courses.put('/:id', function (req, res) {
     console.log('Update course with id ' + id);
     Model.findByIdAndUpdate({_id: id},
         req.body,
-        {upsert: true},
+        {upsert: true, new: true},
         function (err, course) {
             if (err) {
                 console.log('Err ' + err);
