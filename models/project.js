@@ -11,8 +11,7 @@ var Schema = mongoose.Schema;
 var projectSchema = new Schema({
     name: {type: String, required: true},
     description: {type: String},
-    activities: [Activity],
-    metrics : [{ type: Schema.Types.ObjectId, ref: 'Metric' }]
+    activities: [Activity]
 });
 
 

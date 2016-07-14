@@ -9,8 +9,8 @@ var Schema = mongoose.Schema;
 
 var activitySchema = new Schema({
     name: {type: String, required: true},
-    date: {type: Date},
     values: [Value], // Sub documents
+    metrics : [{ type: Schema.Types.ObjectId, ref: 'Metric' }]
 });
 
 
