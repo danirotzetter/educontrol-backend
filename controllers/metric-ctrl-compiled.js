@@ -1,16 +1,16 @@
 var express = require('express');
-var teachers = express.Router();
-var Model = require('../models/teacher.js');
+var metrics = express.Router();
+var Model = require('../models/metric.js');
 const config = require('../app/config.js');
 
 /**
- * List of all teachers
+ * List of all metrics
  */
-teachers.get('/', function (req, res) {
+metrics.get('/', function (req, res) {
     Model.find(function (err, list) {
         if (err) {
             return res.json(500, {
-                message: 'Error getting users.'
+                message: 'Error getting objects.'
             });
         }
         return res.json(list);
@@ -20,46 +20,46 @@ teachers.get('/', function (req, res) {
 /**
  * Find user by id
  */
-teachers.get('/:id', function (req, res) {
+metrics.get('/:id', function (req, res) {
     var id = req.params.id;
-    Model.findOne({ _id: id }, function (err, teacher) {
+    Model.findOne({ _id: id }, function (err, metric) {
         if (err) {
             return res.status(500).json({
                 message: 'Error when getting object'
             });
         }
-        if (!teacher) {
+        if (!metric) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        return res.json(teacher);
+        return res.json(metric);
     });
 });
 
 /**
- * Create new teacher
+ * Create new metric
  */
-teachers.post('/', function (req, res) {
-    console.log('About to save teacher');
-    var teacher = new Model({
+metrics.post('/', function (req, res) {
+    console.log('About to save metric');
+    var metric = new Model({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        location: req.body.location
+        birthday: req.body.birthday
     });
-    teacher.save(function (err, user) {
+    metric.save(function (err, user) {
         if (err) {
-            console.log('Error saving teacher ' + err);
+            console.log('Error saving metric ' + err);
             return res.status(500).json({
                 message: 'Error when saving',
                 error: err
             });
         } else {
-            console.log('Successfully saved teacher ' + err);
+            console.log('Successfully saved metric ' + err);
             return res.json({
                 message: 'saved',
-                _id: teacher._id
+                _id: metric._id
             });
         }
     });
@@ -68,35 +68,35 @@ teachers.post('/', function (req, res) {
 /**
  * Update
  */
-teachers.put('/:id', function (req, res) {
+metrics.put('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('Update teacher with id ' + id);
-    Model.findOne({ _id: id }, function (err, teacher) {
+    console.log('Update metric with id ' + id);
+    Model.findOne({ _id: id }, function (err, metric) {
         if (err) {
             return res.status(500).json({
                 message: 'Error updating',
                 error: err
             });
-        } else if (!teacher) {
+        } else if (!metric) {
             return res.status(404).json({
                 message: 'Not found'
             });
         } else {
-            teacher.firstName = req.body.firstName ? req.body.firstName : teacher.firstName;
-            teacher.lastName = req.body.lastName ? req.body.lastName : teacher.lastName;
-            teacher.email = req.body.email ? req.body.email : teacher.email;
-            teacher.location = req.body.location ? req.body.location : teacher.location;
-            teacher.save(function (err, teacher) {
+            metric.firstName = req.body.firstName ? req.body.firstName : metric.firstName;
+            metric.lastName = req.body.lastName ? req.body.lastName : metric.lastName;
+            metric.email = req.body.email ? req.body.email : metric.email;
+            metric.birthday = req.body.birthday ? req.body.birthday : metric.birthday;
+            metric.save(function (err, metric) {
                 if (err) {
                     return res.status(500).json({
                         message: 'Error saving'
                     });
-                } else if (!teacher) {
+                } else if (!metric) {
                     return res.status(404).json({
                         message: 'Not found'
                     });
                 } else {
-                    return res.json(teacher);
+                    return res.json(metric);
                 }
             });
         }
@@ -106,21 +106,21 @@ teachers.put('/:id', function (req, res) {
 /**
  * Delete by id
  */
-teachers.delete('/:id', function (req, res) {
+metrics.delete('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('About to delete teacher ' + id);
-    Model.findOne({ _id: id }, function (err, teacher) {
+    console.log('About to delete metric ' + id);
+    Model.findOne({ _id: id }, function (err, metric) {
         if (err) {
             return res.status(500).json({
                 message: 'Error finding object'
             });
         }
-        if (!teacher) {
+        if (!metric) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        teacher.remove(function (err) {
+        metric.remove(function (err) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error deleting'
@@ -131,6 +131,6 @@ teachers.delete('/:id', function (req, res) {
     });
 });
 
-module.exports = teachers;
+module.exports = metrics;
 
-//# sourceMappingURL=teacher-ctrl-compiled.js.map
+//# sourceMappingURL=metric-ctrl-compiled.js.map

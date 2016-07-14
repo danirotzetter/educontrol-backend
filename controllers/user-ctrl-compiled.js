@@ -17,7 +17,7 @@ users.get('/', function (req, res) {
     Model.find(function (err, list) {
         if (err) {
             return res.json(500, {
-                message: 'Error getting users.'
+                message: 'Error getting objects.'
             });
         }
         return res.json(list);

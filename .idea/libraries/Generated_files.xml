@@ -129,7 +129,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/bytes/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/duplexify/node_modules/readable-stream/lib/_stream_transform-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/vary/index-compiled.js" />
-        <item url="file://$PROJECT_DIR$/models/course-compiled.js" />
+        <item url="file://$PROJECT_DIR$/models/project-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/duplexify/node_modules/readable-stream/lib/_stream_passthrough-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/jsbn/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/babel-cli/lib/babel-doctor/rules/npm-3-compiled.js" />
@@ -1656,7 +1656,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/for-each-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/reduce-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/splice-compiled.js" />
-        <item url="file://$PROJECT_DIR$/controllers/teacher-ctrl-compiled.js" />
+        <item url="file://$PROJECT_DIR$/controllers/project-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/concat-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/unshift-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/entries-compiled.js" />
@@ -1676,7 +1676,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/pop-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/fill-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/shift-compiled.js" />
-        <item url="file://$PROJECT_DIR$/models/exam-compiled.js" />
+        <item url="file://$PROJECT_DIR$/models/activity-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/find-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/join-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/fn/math/isubh-compiled.js" />
@@ -2373,7 +2373,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.number.is-integer-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.typed.uint8-array-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.array.reduce-right-compiled.js" />
-        <item url="file://$PROJECT_DIR$/controllers/exam-ctrl-compiled.js" />
+        <item url="file://$PROJECT_DIR$/controllers/activity-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/es7.string.trim-right-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/es7.symbol.observable-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/es7.string.trim-left-compiled.js" />
@@ -2393,7 +2393,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.string.fontcolor-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.string.ends-with-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/_species-constructor-compiled.js" />
-        <item url="file://$PROJECT_DIR$/models/grade-compiled.js" />
+        <item url="file://$PROJECT_DIR$/models/value-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.object.is-frozen-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.string.iterator-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/core-js/modules/_inherit-if-required-compiled.js" />
@@ -2964,12 +2964,12 @@
         <item url="file://$PROJECT_DIR$/node_modules/lodash/fp/identical-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/fp/isBoolean-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/fp/isWeakMap-compiled.js" />
-        <item url="file://$PROJECT_DIR$/models/teacher-compiled.js" />
+        <item url="file://$PROJECT_DIR$/models/project-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/fp/lowerCase-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/fp/mergeWith-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/fp/isWeakSet-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/fp/invertObj-compiled.js" />
-        <item url="file://$PROJECT_DIR$/models/student-compiled.js" />
+        <item url="file://$PROJECT_DIR$/models/metric-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/fp/fromPairs-compiled.js" />
         <item url="file://$PROJECT_DIR$/models/person-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/fp/dropRight-compiled.js" />
@@ -3479,6 +3479,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/builtin-modules/static-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/util-deprecate/browser-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/brace-expansion/index-compiled.js" />
+        <item url="file://$PROJECT_DIR$/models/course-compiled-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/normalize-path/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/loud-rejection/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/latest-version/index-compiled.js" />
@@ -3548,6 +3549,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/xdg-basedir/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/window-size/cli-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/expand-range/index-compiled.js" />
+        <item url="file://$PROJECT_DIR$/models/course-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/event-stream/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/content-type/index-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/buffer-shims/index-compiled.js" />
@@ -3761,7 +3763,7 @@
         <item url="file://$PROJECT_DIR$/node_modules/lodash/_assignInDefaults-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/_baseIndexOfWith-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/_baseSortedIndex-compiled.js" />
-        <item url="file://$PROJECT_DIR$/controllers/student-ctrl-compiled.js" />
+        <item url="file://$PROJECT_DIR$/controllers/metric-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/_baseForOwnRight-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/_baseIsEqualDeep-compiled.js" />
         <item url="file://$PROJECT_DIR$/node_modules/lodash/_cloneTypedArray-compiled.js" />
@@ -4479,7 +4481,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/bytes/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/duplexify/node_modules/readable-stream/lib/_stream_transform-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/vary/index-compiled.js" />
-      <root url="file://$PROJECT_DIR$/models/course-compiled.js" />
+      <root url="file://$PROJECT_DIR$/models/teacher-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/duplexify/node_modules/readable-stream/lib/_stream_passthrough-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/jsbn/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/babel-cli/lib/babel-doctor/rules/npm-3-compiled.js" />
@@ -6026,7 +6028,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/pop-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/fill-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/shift-compiled.js" />
-      <root url="file://$PROJECT_DIR$/models/exam-compiled.js" />
+      <root url="file://$PROJECT_DIR$/models/activity-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/find-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/array/join-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/fn/math/isubh-compiled.js" />
@@ -6723,7 +6725,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.number.is-integer-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.typed.uint8-array-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.array.reduce-right-compiled.js" />
-      <root url="file://$PROJECT_DIR$/controllers/exam-ctrl-compiled.js" />
+      <root url="file://$PROJECT_DIR$/controllers/activity-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/es7.string.trim-right-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/es7.symbol.observable-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/es7.string.trim-left-compiled.js" />
@@ -6743,7 +6745,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.string.fontcolor-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.string.ends-with-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/_species-constructor-compiled.js" />
-      <root url="file://$PROJECT_DIR$/models/grade-compiled.js" />
+      <root url="file://$PROJECT_DIR$/models/value-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.object.is-frozen-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/es6.string.iterator-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/core-js/modules/_inherit-if-required-compiled.js" />
@@ -7319,7 +7321,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/lodash/fp/mergeWith-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/lodash/fp/isWeakSet-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/lodash/fp/invertObj-compiled.js" />
-      <root url="file://$PROJECT_DIR$/models/student-compiled.js" />
+      <root url="file://$PROJECT_DIR$/models/metric-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/lodash/fp/fromPairs-compiled.js" />
       <root url="file://$PROJECT_DIR$/models/person-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/lodash/fp/dropRight-compiled.js" />
@@ -7795,7 +7797,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/bin-version-check/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/is-builtin-module/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/require_optional/index-compiled.js" />
-      <root url="file://$PROJECT_DIR$/controllers/course-ctrl-compiled.js" />
+      <root url="file://$PROJECT_DIR$/controllers/project-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/path-is-absolute/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/is-posix-bracket/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/is-equal-shallow/index-compiled.js" />
@@ -7829,6 +7831,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/builtin-modules/static-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/util-deprecate/browser-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/brace-expansion/index-compiled.js" />
+      <root url="file://$PROJECT_DIR$/models/project-compiled-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/normalize-path/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/loud-rejection/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/latest-version/index-compiled.js" />
@@ -7898,6 +7901,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/xdg-basedir/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/window-size/cli-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/expand-range/index-compiled.js" />
+      <root url="file://$PROJECT_DIR$/models/course-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/event-stream/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/content-type/index-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/buffer-shims/index-compiled.js" />
@@ -8111,7 +8115,7 @@
       <root url="file://$PROJECT_DIR$/node_modules/lodash/_assignInDefaults-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/lodash/_baseIndexOfWith-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/lodash/_baseSortedIndex-compiled.js" />
-      <root url="file://$PROJECT_DIR$/controllers/student-ctrl-compiled.js" />
+      <root url="file://$PROJECT_DIR$/controllers/metric-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/lodash/_baseForOwnRight-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/lodash/_baseIsEqualDeep-compiled.js" />
       <root url="file://$PROJECT_DIR$/node_modules/lodash/_cloneTypedArray-compiled.js" />

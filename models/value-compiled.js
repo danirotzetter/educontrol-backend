@@ -6,22 +6,22 @@ var mongoose = require('mongoose');
 // create a schema
 var Schema = mongoose.Schema;
 
-var gradeSchema = new Schema({
-    exam: [{
+var valueSchema = new Schema({
+    activity: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Exam',
+        ref: 'Activity',
         required: true
     }],
-    student: [{
+    metric: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Student',
+        ref: 'Metric',
         required: true
     }],
-    score: { type: Number, required: true }
+    figure: { type: Number, required: true }
 });
 
-var Grade = mongoose.model('Grade', gradeSchema);
+var Value = mongoose.model('Value', valueSchema);
 
-module.exports = Grade;
+module.exports = Value;
 
-//# sourceMappingURL=grade-compiled.js.map
+//# sourceMappingURL=value-compiled.js.map

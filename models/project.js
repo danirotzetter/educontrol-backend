@@ -9,14 +9,13 @@ var Metric = require('./metric').schema;
 var Schema = mongoose.Schema;
 
 var projectSchema = new Schema({
-    name: { type: String, required: true },
-    description: { type: String },
+    name: {type: String, required: true},
+    description: {type: String},
     activities: [Activity],
-    metrics: [{ type: Schema.Types.ObjectId, ref: 'Metric' }]
+    metrics : [{ type: Schema.Types.ObjectId, ref: 'Metric' }]
 });
+
 
 var Project = mongoose.model('Project', projectSchema);
 
 module.exports = Project;
-
-//# sourceMappingURL=course-compiled.js.map

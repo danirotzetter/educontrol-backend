@@ -1,15 +1,15 @@
 var express = require('express');
-var courses = express.Router();
-var Model = require('../models/course.js');
-var Exam = require('../models/exam.js');
+var projects = express.Router();
+var Model = require('../models/project.js');
+var Activity = require('../models/activity.js');
 const config = require('../app/config.js');
 
 
 /**
- * List of all courses
+ * List of all projects
  */
-courses.get('/', function (req, res) {
-    Model.find({}).populate('exams').exec(function (err, list) {
+projects.get('/', function (req, res) {
+    Model.find({}).populate('activities').exec(function (err, list) {
         if (err) {
             return res.json(500, {
                 message: 'Error getting objects.'
@@ -23,46 +23,46 @@ courses.get('/', function (req, res) {
 /**
  * Find user by id
  */
-courses.get('/:id', function (req, res) {
+projects.get('/:id', function (req, res) {
     var id = req.params.id;
-    Model.findOne({_id: id}).populate({path: 'exams', populate: {path: 'grades'}}).populate('students').exec(function (err, course) {
+    Model.findOne({_id: id}).populate({path: 'activities', populate: {path: 'values'}}).populate('metrics').exec(function (err, project) {
         if (err) {
             return res.status(500).json({
                 message: 'Error when getting object'
             });
         }
-        if (!course) {
+        if (!project) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        return res.json(course);
+        return res.json(project);
     });
 });
 
 
 /**
- * Create new course
+ * Create new project
  */
-courses.post('/', function (req, res) {
-    console.log('About to save course');
-    var course = new Model({
+projects.post('/', function (req, res) {
+    console.log('About to save project');
+    var project = new Model({
         name: req.body.name,
         description: req.body.description
     });
-    course.save(function (err, course) {
+    project.save(function (err, project) {
         if (err) {
-            console.log('Error saving course ' + err);
+            console.log('Error saving project ' + err);
             return res.status(500).json({
                 message: 'Error when saving',
                 error: err
             });
         }
         else {
-            console.log('Successfully saved course ' + err);
+            console.log('Successfully saved project ' + err);
             return res.json({
                 message: 'saved',
-                _id: course._id
+                _id: project._id
             });
         }
     });
@@ -71,13 +71,13 @@ courses.post('/', function (req, res) {
 /**
  * Update
  */
-courses.put('/:id', function (req, res) {
+projects.put('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('Update course with id ' + id);
+    console.log('Update project with id ' + id);
     Model.findByIdAndUpdate({_id: id},
         req.body,
         {upsert: true, new: true},
-        function (err, course) {
+        function (err, project) {
             if (err) {
                 console.log('Err ' + err);
                 return res.status(500).json({
@@ -85,14 +85,14 @@ courses.put('/:id', function (req, res) {
                     error: err
                 });
             }
-            else if (!course) {
+            else if (!project) {
                 return res.status(404).json({
                     message: 'Not found'
                 });
             }
             else {
                 console.log('Successfully updated');
-                return res.json(course);
+                return res.json(project);
             }
         });
 });
@@ -101,21 +101,21 @@ courses.put('/:id', function (req, res) {
 /**
  * Delete by id
  */
-courses.delete('/:id', function (req, res) {
+projects.delete('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('About to delete course ' + id);
-    Model.findOne({_id: id}, function (err, course) {
+    console.log('About to delete project ' + id);
+    Model.findOne({_id: id}, function (err, project) {
         if (err) {
             return res.status(500).json({
                 message: 'Error finding object'
             });
         }
-        if (!course) {
+        if (!project) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        course.remove(function (err) {
+        project.remove(function (err) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error deleting'
@@ -127,4 +127,4 @@ courses.delete('/:id', function (req, res) {
 });
 
 
-module.exports = courses;
+module.exports = projects;
