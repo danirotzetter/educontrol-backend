@@ -110,7 +110,7 @@ projects.put('/:id', function (req, res) {
     console.log('Update project with id ' + id);
     Model.findByIdAndUpdate({_id: id},
         req.body,
-        {upsert: true, new: true},
+        {upsert: true, new: false},
         function (err, project) {
             if (err) {
                 console.log('Err ' + err);
@@ -126,7 +126,7 @@ projects.put('/:id', function (req, res) {
             }
             else {
                 console.log('Successfully updated');
-                return res.json(project);
+                return res.json(req.body);
             }
         });
 });

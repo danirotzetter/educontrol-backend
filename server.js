@@ -25,7 +25,6 @@ if (config.get('dev')) {
 }
 app.set('jsonTokenVerificationSecret', config.get('security:jsonTokenVerificationSecret')); // secret variable to verify JSON tokens
 app.use(cors()); // Allow cross-site requests
-
 /**
  * Load controllers
  */

@@ -2,7 +2,7 @@
  * Created by Dani on 03.07.2016.
  */
 var mongoose = require('mongoose');
-var Value = require('./value');
+var Value = require('./value').schema;
 
 // create a schema
 var Schema = mongoose.Schema;

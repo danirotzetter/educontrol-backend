@@ -3,7 +3,7 @@
  */
 var mongoose = require('mongoose');
 var Activity = require('./activity').schema;
-var Metric = require('./metric').schema;
+
 
 // create a schema
 var Schema = mongoose.Schema;

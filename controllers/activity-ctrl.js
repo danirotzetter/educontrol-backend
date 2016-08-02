@@ -10,7 +10,7 @@ const config = require('../app/config.js');
  * List of all activities
  */
 activities.get('/', function (req, res) {
-    Activity.find({}).populate({path: 'values', populate: {path: 'metric'}}).exec(function (err, list) {
+    Activity.find({}).populate({path: 'values', populate: {path: 'metrics'}}).exec(function (err, list) {
         if (err) {
             return res.json(500, {
                 message: 'Error getting objects'
@@ -26,7 +26,7 @@ activities.get('/', function (req, res) {
  */
 activities.get('/:id', function (req, res) {
     var id = req.params.id;
-    Activity.findOne({_id: id}).populate({path: 'values', populate: {path: 'metric'}}).exec(function (err, project) {
+    Activity.findOne({_id: id}).populate({path: 'values', populate: {path: 'metrics'}}).exec(function (err, project) {
         if (err) {
             return res.status(500).json({
                 message: 'Error when getting object'

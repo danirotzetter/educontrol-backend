@@ -12,6 +12,7 @@ var morgan = require('morgan'); // Logging
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var cors = require('cors'); // Allow cross-site requests
 
+
 console.log('Starting server in environment "' + config.get('env') + '"');
 
 /**
@@ -24,14 +25,13 @@ if (config.get('dev')) {
 }
 app.set('jsonTokenVerificationSecret', config.get('security:jsonTokenVerificationSecret')); // secret variable to verify JSON tokens
 app.use(cors()); // Allow cross-site requests
-
 /**
  * Load controllers
  */
 var userCtrl = require('./controllers/user-ctrl.js');
 var metricCtrl = require('./controllers/metric-ctrl.js');
-var teacherCtrl = require('./controllers/teacher-ctrl.js');
 var projectCtrl = require('./controllers/project-ctrl.js');
+var schoolsCtrl = require('./controllers/school-ctrl.js');
 
 /**
  * ==================
@@ -91,9 +91,9 @@ router.get('/', function (req, res) {
 // REGISTER ROUTES -------------------------------
 app.use('/', router);
 app.use('/users', userCtrl);
-app.use('/teachers', teacherCtrl);
 app.use('/metrics', metricCtrl);
 app.use('/projects', projectCtrl);
+app.use('/schools', schoolsCtrl);
 
 /**
  * ==================

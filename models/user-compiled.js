@@ -16,7 +16,8 @@ var userSchema = new Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String },
     email: { type: String, required: true },
-    created_at: Date
+    created_at: Date,
+    group: [{ type: Schema.Types.ObjectId, ref: 'Group' }]
 });
 
 /**
