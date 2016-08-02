@@ -10,7 +10,7 @@ var Schema = mongoose.Schema;
 var activitySchema = new Schema({
     name: {type: String, required: true},
     values: [Value], // Sub documents
-    metrics : [{ type: Schema.Types.ObjectId, ref: 'Metric' }]
+    metrics : [{ type: Schema.Types.Mixed, ref: 'Metric' }] // Mixed in order to be able to send the metrics as array of objects (as opposed to array of object ids) during the save operation
 });
 
 

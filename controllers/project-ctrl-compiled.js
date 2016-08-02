@@ -105,7 +105,7 @@ projects.post('/', function (req, res) {
 projects.put('/:id', function (req, res) {
     var id = req.params.id;
     console.log('Update project with id ' + id);
-    Model.findByIdAndUpdate({ _id: id }, req.body, { upsert: true, new: false }, function (err, project) {
+    Model.findByIdAndUpdate({ _id: id }, req.body, { upsert: true, safe: true }, function (err, project) {
         if (err) {
             console.log('Err ' + err);
             return res.status(500).json({
