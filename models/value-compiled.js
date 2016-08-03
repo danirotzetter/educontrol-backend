@@ -17,6 +17,11 @@ var valueSchema = new Schema({
         ref: 'Metric',
         required: true
     }],
+    school: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'School',
+        required: true
+    }],
     figure: { type: Number, required: true }
 });
 

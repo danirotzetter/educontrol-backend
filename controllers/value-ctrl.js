@@ -1,6 +1,6 @@
 var express = require('express');
-var projects = express.Router();
-var Model = require('../models/project.js');
+var values = express.Router();
+var Model = require('../models/value.js');
 var Activity = require('../models/activity.js');
 const config = require('../app/config.js');
 
@@ -11,25 +11,25 @@ const config = require('../app/config.js');
  * ===============
  */
 var byActivity = express.Router({mergeParams:true});
-projects.use('/byActivity', byActivity);
+values.use('/byActivity', byActivity);
 /**
  * Find by activityId
  */
 byActivity.get('/', function (req, res) {
     console.log('Get by activityId');
     var id = req.query.activityId;
-    Model.findOne({'activities._id': id}).populate({path: 'activities', populate: {path: 'values metrics'}}).exec(function (err, project) {
+    Model.findOne({'activity._id': id}).populate({populate: 'activity school'}).exec(function (err, value) {
         if (err) {
             return res.status(500).json({
                 message: 'Error when getting object'
             });
         }
-        if (!project) {
+        if (!value) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        return res.json(project);
+        return res.json(value);
     });
 });
 /**
@@ -39,64 +39,51 @@ byActivity.get('/', function (req, res) {
  */
 
 /**
- * List of all projects
- */
-projects.get('/', function (req, res) {
-    console.log('Get all projects');
-    Model.find({}).populate({path: 'activities', populate: {path: 'values metrics'}}).exec(function (err, list) {
-        if (err) {
-            return res.json(500, {
-                message: 'Error getting objects.'
-            });
-        }
-        return res.json(list);
-    });
-});
-
-
-/**
  * Find by id
  */
-projects.get('/:id', function (req, res) {
+values.get('/:id', function (req, res) {
     console.log('Get by id');
     var id = req.params.id;
-    Model.findOne({_id: id}).populate({path: 'activities', populate: {path: 'values metrics'}}).exec(function (err, project) {
+    Model.findOne({_id: id}).populate({path: 'activity school'}).exec(function (err, project) {
         if (err) {
             return res.status(500).json({
                 message: 'Error when getting object'
             });
         }
-        if (!project) {
+        if (!value) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        return res.json(project);
+        return res.json(value);
     });
 });
 
 /**
- * Create new project
+ * Create new value
  */
-projects.post('/', function (req, res) {
-    console.log('About to save project');
-    var project = new Model({
-        name: req.body.name,
-        description: req.body.description
+values.post('/', function (req, res) {
+    console.log('About to save value');
+    var value = new Model({
+        date: req.body.date,
+        figure: req.body.figure,
+        activity:req.body.activity,
+        metric: req.body.metricId,
+        school: req.body.school
     });
-    project.save(function (err, project) {
+    value.save(function (err, value) {
         if (err) {
-            console.log('Error saving project ' + err);
+            console.log('Error saving value ' + err);
             return res.status(500).json({
                 message: 'Error when saving',
                 error: err
             });
         }
         else {
-            console.log('Successfully saved project ' + err);
+            console.log('Successfully saved value ' + err);
             return res.json({
                 message: 'saved',
-                _id: project._id
+                _id: value._id
             });
         }
     });
@@ -105,13 +92,13 @@ projects.post('/', function (req, res) {
 /**
  * Update
  */
-projects.put('/:id', function (req, res) {
+values.put('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('Update project with id ' + id);
+    console.log('Update value with id ' + id);
     Model.findByIdAndUpdate({_id: id},
         req.body,
         {upsert: true, safe: true},
-        function (err, project) {
+        function (err, value) {
             if (err) {
                 console.log('Err ' + err);
                 return res.status(500).json({
@@ -119,7 +106,7 @@ projects.put('/:id', function (req, res) {
                     error: err
                 });
             }
-            else if (!project) {
+            else if (!value) {
                 return res.status(404).json({
                     message: 'Not found'
                 });
@@ -135,21 +122,21 @@ projects.put('/:id', function (req, res) {
 /**
  * Delete by id
  */
-projects.delete('/:id', function (req, res) {
+values.delete('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('About to delete project ' + id);
-    Model.findOne({_id: id}, function (err, project) {
+    console.log('About to delete value ' + id);
+    Model.findOne({_id: id}, function (err, value) {
         if (err) {
             return res.status(500).json({
                 message: 'Error finding object'
             });
         }
-        if (!project) {
+        if (!value) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        project.remove(function (err) {
+        value.remove(function (err) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error deleting'
@@ -163,4 +150,4 @@ projects.delete('/:id', function (req, res) {
 
 
 
-module.exports = projects;
+module.exports = values;

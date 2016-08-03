@@ -32,6 +32,7 @@ var userCtrl = require('./controllers/user-ctrl.js');
 var metricCtrl = require('./controllers/metric-ctrl.js');
 var projectCtrl = require('./controllers/project-ctrl.js');
 var schoolsCtrl = require('./controllers/school-ctrl.js');
+var valuesCtrl = require('./controllers/value-ctrl.js');
 
 /**
  * ==================
@@ -99,6 +100,7 @@ app.use('/users', userCtrl);
 app.use('/metrics', metricCtrl);
 app.use('/projects', projectCtrl);
 app.use('/schools', schoolsCtrl);
+app.use('/values', valuesCtrl);
 
 /**
  * ==================

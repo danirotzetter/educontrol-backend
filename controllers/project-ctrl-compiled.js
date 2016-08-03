@@ -42,7 +42,7 @@ byActivity.get('/', function (req, res) {
  */
 projects.get('/', function (req, res) {
     console.log('Get all projects');
-    Model.find({}).populate('activities').exec(function (err, list) {
+    Model.find({}).populate({ path: 'activities', populate: { path: 'values metrics' } }).exec(function (err, list) {
         if (err) {
             return res.json(500, {
                 message: 'Error getting objects.'
@@ -53,7 +53,7 @@ projects.get('/', function (req, res) {
 });
 
 /**
- * Find user by id
+ * Find by id
  */
 projects.get('/:id', function (req, res) {
     console.log('Get by id');
