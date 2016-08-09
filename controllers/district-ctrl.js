@@ -1,13 +1,13 @@
 var express = require('express');
-var schools = express.Router();
-var Model = require('../models/school.js');
+var districts = express.Router();
+var Model = require('../models/district.js');
 const config = require('../app/config.js');
 
 
 /**
- * List of all schools
+ * List of all districts
  */
-schools.get('/', function (req, res) {
+districts.get('/', function (req, res) {
     Model.find(function (err, list) {
         if (err) {
             return res.json(500, {
@@ -20,47 +20,47 @@ schools.get('/', function (req, res) {
 
 
 /**
- * Find school by id
+ * Find district by id
  */
-schools.get('/:id', function (req, res) {
+districts.get('/:id', function (req, res) {
     var id = req.params.id;
-    Model.findOne({_id: id}, function (err, school) {
+    Model.findOne({_id: id}, function (err, district) {
         if (err) {
             return res.status(500).json({
                 message: 'Error when getting object'
             });
         }
-        if (!school) {
+        if (!district) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        return res.json(school);
+        return res.json(district);
     });
 });
 
 
 /**
- * Create new school
+ * Create new district
  */
-schools.post('/', function (req, res) {
-    console.log('About to save school');
-    var school= new Model({
+districts.post('/', function (req, res) {
+    console.log('About to save district');
+    var district= new Model({
         name: req.body.name
     });
-    school.save(function (err, user) {
+    district.save(function (err, user) {
         if (err) {
-            console.log('Error saving school '+err);
+            console.log('Error saving district '+err);
             return res.status(500).json({
                 message: 'Error when saving',
                 error: err
             });
         }
         else{
-            console.log('Successfully saved school '+err);
+            console.log('Successfully saved district '+err);
         return res.json({
             message: 'saved',
-            _id: school._id
+            _id: district._id
         });
         }
     });
@@ -69,36 +69,36 @@ schools.post('/', function (req, res) {
 /**
  * Update
  */
-schools.put('/:id', function (req, res) {
+districts.put('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('Update school with id '+id);
-    Model.findOne({_id: id}, function (err, school) {
+    console.log('Update district with id '+id);
+    Model.findOne({_id: id}, function (err, district) {
         if (err) {
             return res.status(500).json({
                 message: 'Error updating',
                 error: err
             });
         }
-        else if (!school) {
+        else if (!district) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
         else {
-            school.name = req.body.name? req.body.name: school.name;
-            school.save(function (err, school) {
+            district.name = req.body.name? req.body.name: district.name;
+            district.save(function (err, district) {
                 if (err) {
                     return res.status(500).json({
                         message: 'Error saving'
                     });
                 }
-                else if (!school) {
+                else if (!district) {
                     return res.status(404).json({
                         message: 'Not found'
                     });
                 }
                 else {
-                    return res.json(school);
+                    return res.json(district);
                 }
             });
         }
@@ -109,21 +109,21 @@ schools.put('/:id', function (req, res) {
 /**
  * Delete by id
  */
-schools.delete('/:id', function (req, res) {
+districts.delete('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('About to delete school '+id);
-    Model.findOne({_id: id}, function (err, school) {
+    console.log('About to delete district '+id);
+    Model.findOne({_id: id}, function (err, district) {
         if (err) {
             return res.status(500).json( {
                 message: 'Error finding object'
             });
         }
-        if (!school) {
+        if (!district) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        school.remove(function(err) {
+        district.remove(function(err) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error deleting'
@@ -136,4 +136,4 @@ schools.delete('/:id', function (req, res) {
 
 
 
-module.exports = schools;
+module.exports = districts;

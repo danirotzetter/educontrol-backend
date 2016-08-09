@@ -11,10 +11,12 @@
         <item url="file://$PROJECT_DIR$/controllers/project-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/controllers/activity-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/controllers/value-ctrl-compiled.js" />
+        <item url="file://$PROJECT_DIR$/controllers/district-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/controllers/metric-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/controllers/user-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/models/activity-compiled.js" />
         <item url="file://$PROJECT_DIR$/models/value-compiled.js" />
+        <item url="file://$PROJECT_DIR$/controllers/region-ctrl-compiled.js" />
         <item url="file://$PROJECT_DIR$/models/metric-compiled.js" />
         <item url="file://$PROJECT_DIR$/models/project-svc-compiled.js" />
       </sourceFilesUrls>
@@ -8588,10 +8590,12 @@
       <root url="file://$PROJECT_DIR$/controllers/activity-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/controllers/value-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/models/project-compiled-compiled.js" />
+      <root url="file://$PROJECT_DIR$/controllers/district-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/controllers/metric-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/controllers/user-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/models/activity-compiled.js" />
       <root url="file://$PROJECT_DIR$/models/value-compiled.js" />
+      <root url="file://$PROJECT_DIR$/controllers/region-ctrl-compiled.js" />
       <root url="file://$PROJECT_DIR$/models/metric-compiled.js" />
       <root url="file://$PROJECT_DIR$/models/project-svc-compiled.js" />
     </CLASSES>

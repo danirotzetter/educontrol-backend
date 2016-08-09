@@ -1,14 +1,14 @@
 var express = require('express');
-var schools = express.Router();
-var Model = require('../models/school.js');
+var regions = express.Router();
+var Model = require('../models/region.js');
 const config = require('../app/config.js');
 
 
 /**
- * List of all schools
+ * List of all regions
  */
-schools.get('/', function (req, res) {
-    Model.find(function (err, list) {
+regions.get('/', function (req, res) {
+    Model.find().populate({path: 'districts'}).exec(function (err, list) {
         if (err) {
             return res.json(500, {
                 message: 'Error getting objects.'
@@ -20,47 +20,47 @@ schools.get('/', function (req, res) {
 
 
 /**
- * Find school by id
+ * Find region by id
  */
-schools.get('/:id', function (req, res) {
+regions.get('/:id', function (req, res) {
     var id = req.params.id;
-    Model.findOne({_id: id}, function (err, school) {
+    Model.findOne({_id: id}).populate({path: 'districts'}).exec(function (err, region) {
         if (err) {
             return res.status(500).json({
                 message: 'Error when getting object'
             });
         }
-        if (!school) {
+        if (!region) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        return res.json(school);
+        return res.json(region);
     });
 });
 
 
 /**
- * Create new school
+ * Create new region
  */
-schools.post('/', function (req, res) {
-    console.log('About to save school');
-    var school= new Model({
+regions.post('/', function (req, res) {
+    console.log('About to save region');
+    var region= new Model({
         name: req.body.name
     });
-    school.save(function (err, user) {
+    region.save(function (err, user) {
         if (err) {
-            console.log('Error saving school '+err);
+            console.log('Error saving region '+err);
             return res.status(500).json({
                 message: 'Error when saving',
                 error: err
             });
         }
         else{
-            console.log('Successfully saved school '+err);
+            console.log('Successfully saved region '+err);
         return res.json({
             message: 'saved',
-            _id: school._id
+            _id: region._id
         });
         }
     });
@@ -69,36 +69,36 @@ schools.post('/', function (req, res) {
 /**
  * Update
  */
-schools.put('/:id', function (req, res) {
+regions.put('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('Update school with id '+id);
-    Model.findOne({_id: id}, function (err, school) {
+    console.log('Update region with id '+id);
+    Model.findOne({_id: id}).populate({path: 'districts'}).exec(function (err, region) {
         if (err) {
             return res.status(500).json({
                 message: 'Error updating',
                 error: err
             });
         }
-        else if (!school) {
+        else if (!region) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
         else {
-            school.name = req.body.name? req.body.name: school.name;
-            school.save(function (err, school) {
+            region.name = req.body.name? req.body.name: region.name;
+            region.save(function (err, region) {
                 if (err) {
                     return res.status(500).json({
                         message: 'Error saving'
                     });
                 }
-                else if (!school) {
+                else if (!region) {
                     return res.status(404).json({
                         message: 'Not found'
                     });
                 }
                 else {
-                    return res.json(school);
+                    return res.json(region);
                 }
             });
         }
@@ -109,21 +109,21 @@ schools.put('/:id', function (req, res) {
 /**
  * Delete by id
  */
-schools.delete('/:id', function (req, res) {
+regions.delete('/:id', function (req, res) {
     var id = req.params.id;
-    console.log('About to delete school '+id);
-    Model.findOne({_id: id}, function (err, school) {
+    console.log('About to delete region '+id);
+    Model.findOne({_id: id}, function (err, region) {
         if (err) {
             return res.status(500).json( {
                 message: 'Error finding object'
             });
         }
-        if (!school) {
+        if (!region) {
             return res.status(404).json({
                 message: 'Not found'
             });
         }
-        school.remove(function(err) {
+        region.remove(function(err) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error deleting'
@@ -136,4 +136,4 @@ schools.delete('/:id', function (req, res) {
 
 
 
-module.exports = schools;
+module.exports = regions;
